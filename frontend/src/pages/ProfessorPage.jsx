@@ -19,6 +19,10 @@ import StatusModal from "../components/StatusModal";
 import { formatScheduleTimeRange, parseScheduleTimeRange } from "../utils/scheduleTime";
 
 
+
+
+
+const API = import.meta.env.VITE_API_URL;
 const formatDepartment = (department = "") =>
   String(department)
     .trim()
@@ -78,7 +82,7 @@ const ProfessorPage = () => {
 
   const handleLogout = async () => {
     try {
-      await api.post("/users/logout", { username: user?.username });
+      await api.post(`${API}/api/v1/users/logout`, { username: user?.username });
     } catch {
    
     } finally {

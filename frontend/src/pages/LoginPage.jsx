@@ -3,6 +3,8 @@ import { saveToken, saveUser } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+const API = import.meta.env.VITE_API_URL;
+
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +19,7 @@ function Login() {
   }
 
   try {
-    const res = await api.post("/users/login", { username, password });
+    const res = await api.post(`${API}/api/v1/users/login`, { username, password });
     const { token, user } = res.data;
 
     if (token) {

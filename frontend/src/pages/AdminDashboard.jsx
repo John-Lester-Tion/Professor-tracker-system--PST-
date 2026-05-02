@@ -8,6 +8,8 @@ import api, { deleteProfessor } from "../api/axios";
 import { clearToken, clearUser, getUser } from "../utils/auth";
 import { Trash2, Pencil, LogOut, Search, Filter } from 'lucide-react';
 
+const API = import.meta.env.VITE_API_URL;
+
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const user = getUser();
@@ -62,7 +64,7 @@ const AdminDashboard = () => {
 
   const handleLogout = async () => {
     try {
-      await api.post("/users/logout", { username: user?.username });
+      await api.post(`${API}/api/v1/users/logout`, { username: user?.username });
     } finally {
       clearToken();
       clearUser();

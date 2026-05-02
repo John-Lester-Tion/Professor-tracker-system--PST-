@@ -5,6 +5,8 @@ import api from "../api/axios";
 import { formatScheduleTimeRange, parseScheduleTimeRange } from "../utils/scheduleTime";
 import { getStatusConfig } from "../constants/statuses";
 
+
+const API = import.meta.env.VITE_API_URL;
 const formatDepartment = (department = "") =>
   String(department)
     .trim()
@@ -67,7 +69,7 @@ const SearchProfessorPage = () => {
       }
 
       try {
-        const res = await api.get("/schedules/public/search", {
+        const res = await api.get(`${API}/api/v1/schedules/public/search`, {
           params: { name: searchName },
         });
 

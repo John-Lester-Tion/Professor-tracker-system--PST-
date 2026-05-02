@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import api from "../api/axios";
 import { buildScheduleTimeRange, parseScheduleTimeRange } from "../utils/scheduleTime";
 
+const API = import.meta.env.VITE_API_URL;
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const TYPES = [
   { label: "Lab", value: "lab" },

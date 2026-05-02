@@ -4,6 +4,7 @@ import api from "../api/axios";
 import { getUser, saveUser } from "../utils/auth";
 import { STATUSES } from "../constants/statuses";
 
+const API = import.meta.env.VITE_API_URL;
 const StatusModal = ({ onClose, onSuccess, currentStatus }) => {
   const [selectedStatus, setSelectedStatus] = useState(currentStatus || null);
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ const StatusModal = ({ onClose, onSuccess, currentStatus }) => {
         return;
       }
 
-      const response = await api.patch(`/users/updateUser/${userId}`, {
+      const response = await api.patch(`${API}/api/v1/users/updateUser/${userId}`, {
         status: status
       });
 

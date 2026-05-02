@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import api from "../api/axios";
 import { buildScheduleTimeRange } from "../utils/scheduleTime";
 
+const API = import.meta.env.VITE_API_URL;
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const TYPES = [
   { label: "Lab", value: "lab" },
@@ -37,7 +38,7 @@ const ScheduleModal = ({ onClose, onSuccess }) => {
     setLoading(true);
     setError("");
     try {
-      await api.post("/schedules/create", {
+      await api.post(`${API}/api/v1/schedules/create`, {
         subject: form.subject,
         room: form.room,
         day: form.day,
